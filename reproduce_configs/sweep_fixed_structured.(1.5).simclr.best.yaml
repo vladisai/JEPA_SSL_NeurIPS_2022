@@ -1,0 +1,88 @@
+model_type: SimCLR
+n_steps: 17
+val_n_steps: 17
+dataset_size: 10000
+dataset_noise: 0.0
+val_dataset_size: 10000
+wandb: true
+run_name: sweep_fixed_structured.(1.5).simclr.79
+run_group: sweep_fixed_structured.(1.5).simclr
+output_path: null
+safe_every_n_epochs: 10
+eval_mpcs: 20
+quick_debug: false
+seed: 1
+load_checkpoint_path: null
+eval_only: false
+probe_mpc: false
+dataset_static_noise: 1.5
+dataset_structured_noise: true
+dataset_structured_noise_path: /scratch/us441/datasets/cifar
+dataset_batch_size: 64
+dataset_static_noise_speed: 0.0
+dataset_dot_std: 1.3
+dataset_normalize: true
+vicreg:
+  projector: 512-512-512
+  random_projector: false
+  predictor: 515-512-512
+  backbone_mlp: null
+  sim_coeff: 25.0
+  std_coeff: 25.0
+  cov_coeff: 1.0
+  encoding_std_coeff: 0.0
+  encoding_cov_coeff: 0.0
+  decoding_coeff: 0.0
+  action_coeff: 0.0
+  prediction_diff_coeff: 0.0
+  arch: resnet18
+  epochs: 100
+  base_lr: 0.2
+  repr_loss_after_projector: true
+  skip_first_step_vc: false
+  embedding_size: 64
+  action_dim: 2
+  rnn_layers: 1
+  backbone_width_factor: 1
+  rnn_burnin: 1
+  channels: 1
+rssm:
+  backbone_width_factor: 1
+  action_coeff: 0.0
+  arch: resnet18
+  epochs: 100
+  learning_rate: 0.001
+  embedding_size: 64
+  action_dim: 2
+  min_var: 0.1
+  rssm_adam_epsilon: 1.0e-08
+  log_recontructed_image: true
+  channels: 1
+  rnn_burnin: 1
+simclr:
+  projector: id
+  random_projector: false
+  predictor: rnn
+  backbone_mlp: null
+  epochs: 100
+  base_lr: 0.007789982671510853
+  decoding_coeff: 0.0
+  action_coeff: 0.0
+  arch: menet5
+  embedding_size: 512
+  action_dim: 2
+  rnn_layers: 1
+  rnn_burnin: 1
+  backbone_width_factor: 2
+  normalize_z: false
+  loss_temp: 2.0
+  channels: 1
+eval_at_the_end_only: true
+dataset_type: Single
+probing_cfg:
+  full_finetune: false
+  lr: 0.001
+  epochs: 30
+  epochs_enc: 30
+  schedule: null
+  prober_arch: ''
